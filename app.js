@@ -16,8 +16,11 @@ app.use(express.static("public"));
 
 // const items = ["Study Ejs","Do programming"];
 // const workItems = [];
-
-mongoose.connect("mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB");
+const uri = "mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB"
+mongoose
+     .connect( uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+     .then(() => console.log( 'Database Connected' ))
+     .catch(err => console.log( err ));
 
 const itemsSchema = {
     name: String
