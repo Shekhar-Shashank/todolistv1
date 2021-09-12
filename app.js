@@ -49,7 +49,7 @@ const List = mongoose.model("List",listSchema);
 
 
 
-app.get("/",function(req,res){
+app.get("https://frozen-cove-38739.herokuapp.com/",function(req,res){
 
     // const day = date.getDate();
     Item.find({}, function(err, foundItems){
@@ -59,7 +59,7 @@ app.get("/",function(req,res){
                 if(err) console.log(err);
                 else console.log("Saved data item to the database");
             });
-            res.redirect("/");
+            res.redirect("https://frozen-cove-38739.herokuapp.com/");
         } else {
             res.render("list", { listTitle: "Today", newListItems: foundItems });  
 
@@ -68,7 +68,7 @@ app.get("/",function(req,res){
 
 });
 
-app.get("/:customListName",function(req,res){
+app.get("https://frozen-cove-38739.herokuapp.com/:customListName",function(req,res){
     const customListName = _.capitalize(req.params.customListName);
 
     List.findOne({name: customListName}, function(err,foundList){
@@ -80,7 +80,7 @@ app.get("/:customListName",function(req,res){
                     items: defaultItems
                 });
                 list.save();
-                res.redirect("/"+customListName);
+                res.redirect("https://frozen-cove-38739.herokuapp.com/"+customListName);
 
             } else{
                 // show an existing list
@@ -92,7 +92,7 @@ app.get("/:customListName",function(req,res){
    
 })
 
-app.post("/",function(req,res){
+app.post("https://frozen-cove-38739.herokuapp.com/",function(req,res){
     // console.log(req.body)
 
     const itemName = req.body.newItem;
@@ -104,12 +104,12 @@ app.post("/",function(req,res){
 
     if(listName === 'Today'){
         item.save();
-        res.redirect("/")
+        res.redirect("https://frozen-cove-38739.herokuapp.com/")
     } else {
         List.findOne({name: listName}, function(err, foundList){
             foundList.items.push(item);
             foundList.save();
-            res.redirect("/"+listName);
+            res.redirect("https://frozen-cove-38739.herokuapp.com/"+listName);
         })
     }
 
@@ -125,7 +125,7 @@ app.post("/",function(req,res){
 })
 
 
-app.post("/delete",function(req,res){
+app.post("https://frozen-cove-38739.herokuapp.com/delete",function(req,res){
     const checkedItemId = req.body.checkbox;
     const listName = req.body.listName;
     
@@ -134,11 +134,11 @@ app.post("/delete",function(req,res){
             if(err) console.log(err);
             else console.log("Delete item successfully");
         })
-        res.redirect("/")
+        res.redirect("https://frozen-cove-38739.herokuapp.com/")
     } else {
         List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}}, function(err, foundList){
             if(!err){
-                res.redirect("/"+listName);
+                res.redirect("https://frozen-cove-38739.herokuapp.com/"+listName);
             }
         })
     }
@@ -146,14 +146,14 @@ app.post("/delete",function(req,res){
 })
 
 
-app.get("/about", function(req,res){
+app.get("https://frozen-cove-38739.herokuapp.com/about", function(req,res){
     res.render("about");
 })
 
-app.post("/work",function(req,res){
+app.post("https://frozen-cove-38739.herokuapp.com/work",function(req,res){
     let item = req.body.newItem;
     workItems.push(item);
-    res.redirect("/work")
+    res.redirect("https://frozen-cove-38739.herokuapp.com/work")
 })
 
 
