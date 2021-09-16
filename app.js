@@ -23,7 +23,7 @@ const uri = "mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todol
 //      .then(() => console.log( 'Database Connected' ))
 //      .catch(err => console.log( err ));
 
-mongoose.connect("mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB", {useNewUrlParser: true})
+mongoose.connect(uri, {useNewUrlParser: true})
 
 const itemsSchema = {
     name: String
