@@ -16,13 +16,14 @@ app.use(express.static("public"));
 
 // const items = ["Study Ejs","Do programming"];
 // const workItems = [];
-// const uri = "mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB"
-// mongoose
-//      .connect( uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-//      .then(() => console.log( 'Database Connected' ))
-//      .catch(err => console.log( err ));
 
-mongoose.connect("mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB", {useNewUrlParser: true})
+const uri = "mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB"
+mongoose
+     .connect( uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+     .then(() => console.log( 'Database Connected' ))
+     .catch(err => console.log( err ));
+
+// mongoose.connect("mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB", {useNewUrlParser: true})
 
 const itemsSchema = {
     name: String
