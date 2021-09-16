@@ -17,7 +17,7 @@ app.use(express.static("public"));
 // const items = ["Study Ejs","Do programming"];
 // const workItems = [];
 
-const uri = "mongodb+srv://shashank:shekhars027@cluster0.ibjzn.mongodb.net/todolistDB"
+const uri = "Add Database url like Mongodb Atlas Connect to application"
 
 // mongoose
 //      .connect( uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
